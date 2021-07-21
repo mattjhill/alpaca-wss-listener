@@ -1,4 +1,5 @@
 import logging
+import time 
 
 from alpaca_trade_api.stream import Stream
 from alpaca_trade_api.common import URL
@@ -6,8 +7,11 @@ from alpaca_trade_api.common import URL
 log = logging.getLogger(__name__)
 
 
-async def handle_event(event):
-    log.info(event)
+async def handle_trade_updates(event):
+    log.info(event._raw)
+
+async def handle_bars(event):
+    log.info(event._raw)
 
 def run_connection(conn):
     try:
@@ -22,8 +26,8 @@ def run_connection(conn):
 def main():
     logging.basicConfig(level=logging.INFO)
     stream = Stream(data_feed='sip', raw_data=True, base_url=URL('https://paper-api.alpaca.markets'))
-    stream.subscribe_trade_updates(handle_event)
-    stream.subscribe_bars(handle_event, '*')
+    stream.subscribe_trade_updates(handle_trade_updates)
+    stream.subscribe_bars(handle_bars, '*')
     stream.run()
 
 if __name__ == "__main__":
