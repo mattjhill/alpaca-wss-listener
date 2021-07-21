@@ -6,7 +6,7 @@ log = logging.getLogger(__name__)
 
 
 async def handle_event(event):
-    print(event)
+    log.info(event)
 
 def main():
     logging.basicConfig(level=logging.INFO)
