@@ -9,6 +9,7 @@ async def handle_event(event):
     print(event)
 
 def main():
+    logging.basicConfig(level=logging.INFO)
     stream = Stream(data_feed='sip', raw_data=True)
     stream.subscribe_trade_updates(handle_event)
     stream.subscribe_bars(handle_event)
