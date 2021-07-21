@@ -11,15 +11,15 @@ async def handle_trade_updates(event):
     log.info(event._raw)
 
 async def handle_bars(event):
-    log.info(event._raw)
+    log.info({'event': 'bar', 'bar': event._raw})
 
 def run_connection(conn):
     try:
         conn.run()
     except Exception as e:
-        print(f'Exception from websocket connection: {e}')
+        log.warning(f'Exception from websocket connection: {e}')
     finally:
-        print("Trying to re-establish connection")
+        log.warning("Trying to re-establish connection")
         time.sleep(3)
         run_connection(conn)
 
