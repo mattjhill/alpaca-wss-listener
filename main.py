@@ -8,10 +8,10 @@ log = logging.getLogger(__name__)
 
 
 async def handle_trade_updates(event):
-    log.info(event)
+    log.info(event._raw)
 
 async def handle_bars(event):
-    log.info({'event': 'bar', 'bar': event})
+    log.info({'event': 'bar', 'bar': event._raw})
 
 def run_connection(conn):
     try:
