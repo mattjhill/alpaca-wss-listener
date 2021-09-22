@@ -1,1 +1,1 @@
-worker: python main.py
+worker: python polygon_listener.py
