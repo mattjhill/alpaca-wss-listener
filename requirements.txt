@@ -1,1 +1,2 @@
 alpaca_trade_api
+polygon-api-client
