@@ -4,6 +4,7 @@ from polygon import WebSocketClient, STOCKS_CLUSTER
 import boto3
 import json
 import decimal
+import os
 
 
 sess = boto3.Session(profile_name='knovita')
@@ -32,7 +33,7 @@ def my_custom_close_handler(ws):
 
 
 def main():
-    key = 'KXNQy3zEKtN6rVxtHknmYpTQErseU_Ci'
+    key = os.environ['POLYGON_API_KEY']
     my_client = WebSocketClient('options', key, my_custom_process_message)
     my_client.run_async()
 
