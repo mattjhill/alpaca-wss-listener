@@ -7,8 +7,7 @@ import decimal
 import os
 
 
-sess = boto3.Session(profile_name='knovita')
-dynamodb = sess.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('polygon-options-trades')
 
 def my_custom_process_message(message):
